@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi.BookOperations.BookDetail;
 using WebApi.BookOperations.CreateBook;
+using WebApi.BookOperations.DeleteBook;
 using WebApi.BookOperations.GetBooks;
 using WebApi.BookOperations.UpdateBook;
 using WebApi.DataAccess;
@@ -70,7 +71,7 @@ namespace WebApi.Controllers
             UpdateBookCommand command = new UpdateBookCommand(_context);
             try
             {
-                updatedBook.Id = id;
+                command.BookId= id;
                 command.Model = updatedBook;
                 command.Handle();
                 return Ok();
@@ -85,15 +86,17 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
         {
-            var book = _context.Books.FirstOrDefault(x => x.Id == id);
-
-            if (book is null)
+            try
             {
-                return BadRequest();
+                DeleteBookCommand command = new DeleteBookCommand(_context);
+                command.BookId = id;
+                command.Handle();
+                return Ok();
             }
-            _context.Books.Remove(book);
-            _context.SaveChanges();
-            return Ok();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

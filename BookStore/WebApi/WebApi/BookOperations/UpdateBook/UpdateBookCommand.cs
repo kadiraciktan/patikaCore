@@ -10,6 +10,7 @@ namespace WebApi.BookOperations.UpdateBook
     public class UpdateBookCommand
     {
         public UpdateBookModel Model { get; set; }
+        public int BookId {  get; set; }
         private readonly BookContext _context;
 
         public UpdateBookCommand(BookContext bookContext)
@@ -18,10 +19,10 @@ namespace WebApi.BookOperations.UpdateBook
         }
         public void Handle()
         {
-            var book = _context.Books.FirstOrDefault(x => x.Id == Model.Id);
+            var book = _context.Books.FirstOrDefault(x => x.Id == BookId);
             if (book is null)
             {
-                throw new InvalidOperationException("Kitap Bulunamadı");
+                throw new InvalidOperationException("Güncellenecek Kitap Bulunamadı");
             }
 
             //Eğer değişmiş bir değer gelirse değiştirir
@@ -36,7 +37,7 @@ namespace WebApi.BookOperations.UpdateBook
 
     public class UpdateBookModel
     {
-        public int Id { get; set; }
+        
         public string Title { get; set; }
         public int GenreId { get; set; }
         public int PageCount { get; set; }
