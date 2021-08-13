@@ -16,36 +16,59 @@ namespace WebApi.DataAccess
         {
             using (var context = new BookContext(serviceProvider.GetRequiredService<DbContextOptions<BookContext>>()))
             {
-                if (context.Books.Any())
+                if (!context.Books.Any())
                 {
-                    return;
+                    context.Books.AddRange(
+                      new Book()
+                      {
+
+                          Title = "Harry Potter Sorcerer's Stone",
+                          GenreId = 2,
+                          AuthorId = 1,
+                          PageCount = 860,
+                          PublishDate = new DateTime(2001, 6, 12)
+                      },
+                      new Book()
+                      {
+
+                          Title = "Hobbit",
+                          GenreId = 2,
+                          AuthorId=2,
+                          PageCount = 1300,
+                          PublishDate = new DateTime(2010, 5, 23)
+                      },
+                      new Book()
+                      {
+                          Title = "İnsan Ne İle Yaşar ? ",
+                          GenreId = 1,
+                          AuthorId=3,
+                          PageCount = 120,
+                          PublishDate = new DateTime(2002, 12, 21)
+                      });
                 }
 
-                context.Books.AddRange(
-                    new Book()
-                    {
-                        //Id = 1,
-                        Title = "Lean Startup",
-                        GenreId = 1,//Personal Growth 
-                        PageCount = 200,
-                        PublishDate = new DateTime(2001, 6, 12)
-                    },
-                    new Book()
-                    {
-                        //Id = 2,
-                        Title = "Herland",
-                        GenreId = 2,//Since Fiction,
-                        PageCount = 250,
-                        PublishDate = new DateTime(2010, 5, 23)
-                    },
-                    new Book()
-                    {
-                        //Id = 3,
-                        Title = "Dune",
-                        GenreId = 2,//Personal Growth 
-                        PageCount = 540,
-                        PublishDate = new DateTime(2002, 12, 21)
-                });
+                
+
+                if (!context.Genres.Any())
+                {
+                    context.Genres.AddRange(
+                      new Genre { Name = "Personal Growth" },
+                      new Genre { Name = "Science Fiction" },
+                      new Genre { Name = "Romance" }
+                    );
+
+                }
+
+                if (!context.Authors.Any())
+                {
+                    context.Authors.AddRange(
+                        new Author { Name="Joanne Kathleen",Surname="Rowling",BirthDate=new DateTime(1965,7,31)},
+                        new Author { Name= "John Ronald Reuel",Surname="Tolkien",BirthDate=new DateTime(1892,1,3)},
+                        new Author { Name= "Lev Nikolayeviç",Surname="Tolstoy",BirthDate=new DateTime(1828,9,9) },
+                        new Author { Name = "George", Surname = "Orwell", BirthDate = new DateTime(1903, 6, 25) },
+                        new Author { Name = "Stephan", Surname = "King", BirthDate = new DateTime(1947, 9, 21) }
+                    );
+                }
 
                 context.SaveChanges();
 

@@ -30,3 +30,7 @@ C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Micro
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Newtonsoft.Json.dll

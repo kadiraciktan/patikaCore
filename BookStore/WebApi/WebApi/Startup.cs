@@ -11,8 +11,11 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using WebApi.DataAccess;
+using WebApi.Middlewares;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -36,7 +39,11 @@ namespace WebApi
             });
 
             //Context Ekledik
-            services.AddDbContext<BookContext>(options=>options.UseInMemoryDatabase(databaseName:"BookStoreDB"));
+            services.AddDbContext<BookContext>(options => options.UseInMemoryDatabase(databaseName: "BookStoreDB"));
+            //AutoMapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddSingleton<ILoggerService,DBLogger>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +61,8 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCustomExeptionMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

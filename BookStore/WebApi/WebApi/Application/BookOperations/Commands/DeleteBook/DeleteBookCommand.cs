@@ -18,7 +18,6 @@ namespace WebApi.BookOperations.DeleteBook
         public void Handle()
         {
             var book = _context.Books.FirstOrDefault(x => x.Id == BookId);
-
             if (book is null)
             {
                 throw new InvalidOperationException("Silinecek Kitap Bulunamadı");

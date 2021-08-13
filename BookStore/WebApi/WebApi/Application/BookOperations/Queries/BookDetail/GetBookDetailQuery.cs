@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,26 +13,23 @@ namespace WebApi.BookOperations.BookDetail
     public class GetBookDetailQuery
     {
         private readonly BookContext _context;
+        private readonly IMapper _mapper;
         public int BookId { get; set; }
-        public GetBookDetailQuery(BookContext context)
+        public GetBookDetailQuery(BookContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public BookDetailViewModel Handle()
         {
-            Book book = _context.Books.FirstOrDefault(x => x.Id == BookId);
+            Book book = _context.Books.Include(x=>x.Genre).Include(x=>x.Author).FirstOrDefault(x => x.Id == BookId);
 
             if (book == null)
             {
                 throw new InvalidOperationException("Kitap Bulunamadı");
             }
-
-            BookDetailViewModel view = new BookDetailViewModel();
-            view.Title = book.Title;
-            view.Genre = ((GenreEnum)book.GenreId).ToString();
-            view.PageCount =   book.PageCount;
-            view.PublishDate = book.PublishDate.ToString("dd/MM/yyyy");
+            BookDetailViewModel view = _mapper.Map<BookDetailViewModel>(book);
             return view;
         }
         
@@ -41,5 +40,6 @@ namespace WebApi.BookOperations.BookDetail
         public string Genre { get; set; }
         public int PageCount { get; set; }
         public string PublishDate { get; set; }
+        public string Author { get; set; }
     }
 }

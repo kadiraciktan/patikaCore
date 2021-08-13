@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,27 +12,37 @@ namespace WebApi.BookOperations.CreateBook
     {
 
         public CreateBookModel Model { get; set; }
+
         private readonly BookContext _context;
-        public CreateBookCommand(BookContext context)
+        private readonly IMapper _mapper;
+        public CreateBookCommand(BookContext context, IMapper mapper)
         {
-            _context = context; 
+            _context = context;
+            _mapper = mapper;
         }
 
         public void Handle()
         {
             var book = _context.Books.FirstOrDefault(x => x.Title == Model.Title);
+
             if (book is not null)
             {
                 throw new InvalidOperationException("Kitap Zaten Mevcut");
             }
 
-            book = new Book();
-            book.Title = Model.Title;
-            book.PublishDate = Model.PublishDate;
-            book.PageCount = Model.PageCount;
-            book.GenreId =  Model.GenreId;
+
+            //Modelden gelen verileri book ta uygun yerlere mapler
+            book = _mapper.Map<Book>(Model);//new Book();
+
+            //book.Title = Model.Title;
+            //book.PublishDate = Model.PublishDate;
+            //book.PageCount = Model.PageCount;
+            //book.GenreId = Model.GenreId;
+
+
+
             _context.Books.Add(book);
-            _context.SaveChanges();          
+            _context.SaveChanges();
         }
 
         public class CreateBookModel
@@ -39,7 +50,7 @@ namespace WebApi.BookOperations.CreateBook
             public string Title { get; set; }
             public int GenreId { get; set; }
             public int PageCount { get; set; }
-            public DateTime PublishDate { get; set; }   
+            public DateTime PublishDate { get; set; }
 
         }
 
