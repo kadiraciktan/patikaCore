@@ -44,6 +44,9 @@ namespace WebApi
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddSingleton<ILoggerService,DBLogger>();
+
+            services.AddScoped<IBookContext>(provider => provider.GetService<BookContext>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

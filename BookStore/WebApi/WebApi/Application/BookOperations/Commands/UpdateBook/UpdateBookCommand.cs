@@ -11,9 +11,9 @@ namespace WebApi.BookOperations.UpdateBook
     {
         public UpdateBookModel Model { get; set; }
         public int BookId {  get; set; }
-        private readonly BookContext _context;
+        private readonly IBookContext _context;
 
-        public UpdateBookCommand(BookContext bookContext)
+        public UpdateBookCommand(IBookContext bookContext)
         {
             _context = bookContext;
         }

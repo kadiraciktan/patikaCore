@@ -10,8 +10,8 @@ namespace WebApi.Application.GenreOperations.Commands.DeleteGenre
     public class DeleteGenreCommand
     {
         public int  GenreId { get; set; }
-        private readonly BookContext _context;
-        public DeleteGenreCommand(BookContext context, IMapper mapper)
+        private readonly IBookContext _context;
+        public DeleteGenreCommand(IBookContext context, IMapper mapper)
         {
             _context = context;
         }
