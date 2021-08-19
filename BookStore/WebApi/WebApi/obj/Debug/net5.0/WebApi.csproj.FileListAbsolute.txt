@@ -34,3 +34,10 @@ C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\obj\Debug\net5.0\WebAp
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\obj\Debug\net5.0\WebApi.pdb
 C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\kadir\Desktop\patikaCore\BookStore\WebApi\WebApi\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

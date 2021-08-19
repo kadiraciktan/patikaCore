@@ -47,7 +47,7 @@ namespace WebApi.Middlewares
             string message = $"[Error]   HTTP {context.Request.Method} - {context.Response.StatusCode} Error Message : {ex.Message} in {watch.Elapsed.TotalMilliseconds}ms";
             _logger.Write(message);
             context.Response.ContentType = "application/json";
-            return context.Response.WriteAsync(JsonConvert.SerializeObject(ex.Message, Formatting.Indented));
+            return context.Response.WriteAsync(JsonConvert.SerializeObject(ex.Message, Formatting.None));
         }
     }
 
