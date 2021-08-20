@@ -17,8 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Application\MovieOperations\Commands\DeleteMovie\" />
-    <Folder Include="Application\MovieOperations\Commands\UpdateMovie\" />
-    <Folder Include="Application\MovieOperations\Queries\GetMovieDetail\" />
     <Folder Include="Application\CustomerOperations\" />
   </ItemGroup>
 

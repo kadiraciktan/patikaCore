@@ -34,7 +34,6 @@ namespace MovieStore.DataAccess
                 .WithMany(x=>x.MovieActors)
                 .HasForeignKey(x => x.ActorId);
 
-
         }
 
         public override int SaveChanges()

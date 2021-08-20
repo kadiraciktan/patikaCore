@@ -1,37 +1,44 @@
 ﻿
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using MovieStore.Application.ActorOperations.Queries.GetActors;
 using MovieStore.Application.DirectorOperations.Queries.GetDirectors;
 using MovieStore.DataAccess;
 using MovieStore.Entities;
 
-namespace MovieStore.Application.MovieOperations.Queries.GetMovies;
-public class GetMoviesQuery
+namespace MovieStore.Application.MovieOperations.Queries.GetMovieDetail;
+public class GetMovieDetailQuery
 {
     private readonly IMovieContext _context;
     private readonly IMapper _mapper;
+    public int MovieId { get; set; }
 
-    public GetMoviesQuery(IMovieContext context, IMapper mapper)
+    public GetMovieDetailQuery(IMovieContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
     }
 
-    public List<MoviesViewModel> Handle()
+    public MovieDetailModel Handle()
     {
-        var list = _context.Movies
+        var movie = _context.Movies
             .Include(x => x.Director)
             .Include(x => x.Genre)
             .Include(x => x.MovieActors)
             .ThenInclude(x => x.Actor)
-            .ToList();
-        var result = _mapper.Map<List<MoviesViewModel>>(list);
+            .FirstOrDefault(x => x.Id == MovieId);
+        if (movie is null)
+        {
+            throw new InvalidOperationException("Film Bulunamadı");
+        }
+
+        var result = _mapper.Map<MovieDetailModel>(movie);
+
         return result;
+
     }
 }
 
-public class MoviesViewModel
+public class MovieDetailModel
 {
     public string Id { get; set; }
 
@@ -43,12 +50,12 @@ public class MoviesViewModel
 
     public DirectorsViewModel Director { get; set; }
 
-    public List<GetMoviesActorsModel> Actors { get; set; }
+    public List<GetMovieDetailActorsModel> Actors { get; set; }
 
     public float Price { get; set; }
 }
 
-public class GetMoviesActorsModel
+public class GetMovieDetailActorsModel
 {
     public int Id { get; set; }
     public string Name { get; set; }

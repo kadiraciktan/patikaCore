@@ -21,6 +21,7 @@ namespace MovieStore.Controllers
     {
         private readonly IMovieContext _context;
         private readonly IMapper _mapper;
+        
         public ActorController(IMovieContext context, IMapper mapper)
         {
             _context = context;

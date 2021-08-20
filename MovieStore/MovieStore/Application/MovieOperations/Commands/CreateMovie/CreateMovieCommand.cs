@@ -26,14 +26,14 @@ public class CreateMovieCommand
             throw new InvalidOperationException("Bu Film Zaten Mevcut.");
         }
 
-        //foreach (var item in Model.Actors)
-        //{
-        //    if (!_context.Actors.Any(x=>x.Id==item.ActorId))
-        //    {
-        //        throw new InvalidOperationException($" {item.Actor.Name} Aktör Bulunamadı");
-        //    }
-        //}
-
+        // foreach (var item in Model.Actors)
+        // {
+        //     if (!_context.Actors.Any(x=>x.Id==item.ActorId))
+        //     {
+        //         throw new InvalidOperationException($" {item.Actor.Name} Aktör Bulunamadı");
+        //     }
+        // }
+           
         
         var result = _mapper.Map<Movie>(Model);
         _context.Movies.Add(result);
@@ -58,9 +58,6 @@ public class CreateMovieModel
 
 
     public virtual List<int> MovieActors {  get; set; }
-
-  
-
 }
 
 public class CreateMovieModelActor

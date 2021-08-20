@@ -60,7 +60,7 @@ namespace MovieStore.DataAccess
                         Year=DateTime.Now.Date.AddYears(-3),
                         MovieActors = new List<MovieActor>(){
                             new MovieActor(){ActorId=1},
-                            new MovieActor(){ActorId=2},
+                            new MovieActor(){ActorId=4},
                             new MovieActor(){ActorId=3},
                         }
                     }
