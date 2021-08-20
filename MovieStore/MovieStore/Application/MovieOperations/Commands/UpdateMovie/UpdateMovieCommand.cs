@@ -19,19 +19,42 @@ public class UpdateMovieCommand
         _mapper = mapper;
     }
 
-
     public void Handle()
     {
         var movie = _context.Movies
-             .Include(x => x.Director)
+            .Include(x => x.Director)
             .Include(x => x.Genre)
             .Include(x => x.MovieActors)
             .ThenInclude(x => x.Actor)
             .FirstOrDefault(x => x.Id == MovieId);
+
         if (movie is null)
         {
             throw new InvalidOperationException("Film Bulunamadı");
         }
+
+        if (!_context.Genres.Any(x=>x.Id==movie.GenreId))
+        {
+            throw new InvalidOperationException("Kategori Bulunamadı");
+
+        }
+
+        if (!_context.Directors.Any(x => x.Id == movie.DirectorId))
+        {
+            throw new InvalidOperationException("Yönetmen Bulunamadı");
+
+        }
+
+
+
+        foreach (var item in Model.MovieActors)
+        {
+            if (!_context.Actors.Any(x => x.Id == item))
+            {
+                throw new InvalidOperationException($" {item} Id li Aktör Bulunamadı");
+            }
+        }
+
 
         var result = _mapper.Map<Movie>(Model);
         movie.Name = movie.Name == default ? movie.Name : result.Name;

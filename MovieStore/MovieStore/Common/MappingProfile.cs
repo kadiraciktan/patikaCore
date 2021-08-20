@@ -3,6 +3,8 @@ using MovieStore.Application.ActorOperations.Commands.CreateActor;
 using MovieStore.Application.ActorOperations.Commands.UpdateActor;
 using MovieStore.Application.ActorOperations.Queries.GetActorDetail;
 using MovieStore.Application.ActorOperations.Queries.GetActors;
+using MovieStore.Application.CustomerOperations.Commands;
+using MovieStore.Application.CustomerOperations.Commands.CreateCommand;
 using MovieStore.Application.DirectorOperations.Commands.CreateDirector;
 using MovieStore.Application.DirectorOperations.Commands.UpdateDirector;
 using MovieStore.Application.DirectorOperations.Queries.GetDirectorDetail;
@@ -17,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static MovieStore.Application.CustomerOperations.Queries.GetCustomers.GetCustomersQuery;
 
 namespace MovieStore.Common
 {
@@ -24,21 +27,27 @@ namespace MovieStore.Common
     {
         public MappingProfile()
         {
+            #region Genre
             CreateMap<Genre, GenresViewModel>();
+            #endregion
 
+            #region Actor
             CreateMap<Actor, ActorsViewModel>();
             CreateMap<Actor, ActorDetailViewModel>();
             CreateMap<CreateActorModel, Actor>();
             CreateMap<UpdateActorModel, Actor>();
+            #endregion
 
+            #region Director
             CreateMap<Director, DirectorsViewModel>();
             CreateMap<Director, DirectorDetailModel>();
             CreateMap<CreateDirectorModel, Director>();
             CreateMap<UpdateDirectorModel, Director>();
+            #endregion
 
+            #region Movie
             CreateMap<Movie, MoviesViewModel>();
             CreateMap<CreateMovieModel, Movie>();
-
             CreateMap<Movie, CreateMovieModel>().ForMember(x => x.MovieActors,
                 opt => opt.MapFrom(x => x.Id));
 
@@ -61,13 +70,29 @@ namespace MovieStore.Common
             CreateMap<UpdateMovieModel, Movie>().ForMember(
           dest => dest.MovieActors,
           opt => opt.MapFrom(src => src.MovieActors.Select(x => new MovieActor() { ActorId = x })));
-          
+
             CreateMap<Movie, UpdateMovieModel>().ForMember(
    dest => dest.MovieActors,
    opt => opt.MapFrom(src => src.MovieActors.Select(x => x.ActorId)));
 
 
+            #endregion
 
+            #region Customer
+            CreateMap<CreateCustomerModel, Customer>();
+
+            CreateMap<Customer, CustomersViewModel>()
+                .ForMember(dest=>dest.BougthMovies,
+                opt=>opt.MapFrom(src=>src.BougthMovies.Select(x=>new CustormersMovieModel { Id=x.Id,Name=x.Name})))
+                .ForMember(dest=>dest.FavoriteGenres,
+                opt=>opt.MapFrom(src=>src.FavoriteGenres.Select(x=>new CustormersGenreModel { Id=x.Id,Name=x.Name})));
+
+
+            #endregion
+
+
+            //CreateMap<kaynak,hedef>()
+            //.ForMember(dest=> // hedefin neresine müdahale edicez , opt=> // nasıl müdahale edicez
         }
     }
 }

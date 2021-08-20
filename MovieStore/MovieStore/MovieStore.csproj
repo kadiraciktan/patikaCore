@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\MovieOperations\Commands\DeleteMovie\" />
-    <Folder Include="Application\CustomerOperations\" />
+    <Folder Include="Application\CustomerOperations\Queries\GetCustomerDetail\" />
+    <Folder Include="Application\OrderOperations\" />
   </ItemGroup>
 
 </Project>

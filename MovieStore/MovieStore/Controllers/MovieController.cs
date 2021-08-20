@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MovieStore.Application.MovieOperations.Commands.CreateMovie;
+using MovieStore.Application.MovieOperations.Commands.DeleteMovie;
 using MovieStore.Application.MovieOperations.Commands.UpdateMovie;
 using MovieStore.Application.MovieOperations.Queries.GetMovieDetail;
 using MovieStore.Application.MovieOperations.Queries.GetMovies;
@@ -55,8 +56,20 @@ public class MovieController : ControllerBase
         UpdateMovieCommand command = new UpdateMovieCommand(_context,_mapper);
         command.Model = model;
         command.MovieId = id;
+        UpdateMovieCommandValidator validationRules = new UpdateMovieCommandValidator();
+        validationRules.ValidateAndThrow(command);
         command.Handle();
         return Ok();
+    }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeleteMovie(int id)
+    {
+        DeleteMovieCommand command = new DeleteMovieCommand(_context,_mapper);
+        command.MovieId = id;
+        DeleteMovieCommandValidator validationRules = new DeleteMovieCommandValidator();
+        validationRules.ValidateAndThrow(command);
+        command.Handle();
+        return Ok();
     }
 }

@@ -66,6 +66,19 @@ namespace MovieStore.DataAccess
                     }
                 };
 
+                List<Customer> customers = new List<Customer>()
+                {
+                    new Customer(){ 
+                        Id = 1,
+                        Email="test@test.com",
+                        Name="Kadir",
+                        Surname="AÇIKTAN",
+                        Password="123",
+                        BougthMovies= new List<Movie>(){ movies[0]},
+                        FavoriteGenres= new List<Genre>{ genres[4]}
+                    }
+                };
+
                 if (!context.Genres.Any())
                 {
                     context.Genres.AddRange(genres);
@@ -77,9 +90,6 @@ namespace MovieStore.DataAccess
                     context.Actors.AddRange(actors);
                 }
 
-
-                context.SaveChanges();
-
                 if (!context.Directors.Any())
                 {
                     context.Directors.AddRange(directors);
@@ -88,6 +98,11 @@ namespace MovieStore.DataAccess
                 if (!context.Movies.Any())
                 {
                     context.Movies.AddRange(movies);
+                }
+
+                if (!context.Customers.Any())
+                {
+                    context.Customers.AddRange(customers);
                 }
 
                 context.SaveChanges();

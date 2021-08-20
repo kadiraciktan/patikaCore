@@ -27,5 +27,7 @@ namespace MovieStore.Entities
 
         public float Price {  get; set; }
 
+        public virtual ICollection<MovieCustomer> MovieCustomers {  get; set; }
+
     }
 }
