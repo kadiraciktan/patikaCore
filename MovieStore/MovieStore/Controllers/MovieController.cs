@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieStore.Application.MovieOperations.Commands.CreateMovie;
 using MovieStore.Application.MovieOperations.Commands.DeleteMovie;
@@ -9,6 +10,7 @@ using MovieStore.Application.MovieOperations.Queries.GetMovies;
 using MovieStore.DataAccess;
 
 namespace MovieStore.Controllers;
+[Authorize]
 [Route("api/[controller]s")]
 [ApiController]
 public class MovieController : ControllerBase

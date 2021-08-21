@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\CustomerOperations\Queries\GetCustomerDetail\" />
     <Folder Include="Application\OrderOperations\" />
   </ItemGroup>
 

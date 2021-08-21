@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieStore.Application.GenreOperations.Queries.GetGenres;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Controllers
 {
+    [Authorize]
     [Route("api/[controller]s")]
     [ApiController]
     public class GenreController : ControllerBase

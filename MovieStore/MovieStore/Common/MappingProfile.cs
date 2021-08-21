@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static MovieStore.Application.CustomerOperations.Queries.GetCustomerDetail.GetCustomerDetailQuery;
 using static MovieStore.Application.CustomerOperations.Queries.GetCustomers.GetCustomersQuery;
 
 namespace MovieStore.Common
@@ -86,6 +87,13 @@ namespace MovieStore.Common
                 opt=>opt.MapFrom(src=>src.BougthMovies.Select(x=>new CustormersMovieModel { Id=x.Id,Name=x.Name})))
                 .ForMember(dest=>dest.FavoriteGenres,
                 opt=>opt.MapFrom(src=>src.FavoriteGenres.Select(x=>new CustormersGenreModel { Id=x.Id,Name=x.Name})));
+
+
+            CreateMap<Customer, CustomerDetailViewModel>()
+              .ForMember(dest => dest.BougthMovies,
+              opt => opt.MapFrom(src => src.BougthMovies.Select(x => new CustomerDetailMovieModel { Id = x.Id, Name = x.Name })))
+              .ForMember(dest => dest.FavoriteGenres,
+              opt => opt.MapFrom(src => src.FavoriteGenres.Select(x => new CustomerDetailGenreModel { Id = x.Id, Name = x.Name })));
 
 
             #endregion

@@ -73,7 +73,7 @@ namespace MovieStore.DataAccess
                         Email="test@test.com",
                         Name="Kadir",
                         Surname="AÇIKTAN",
-                        Password="123",
+                        Password="123456",
                         BougthMovies= new List<Movie>(){ movies[0]},
                         FavoriteGenres= new List<Genre>{ genres[4]}
                     }
