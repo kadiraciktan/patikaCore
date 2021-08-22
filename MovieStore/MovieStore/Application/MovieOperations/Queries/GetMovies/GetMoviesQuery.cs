@@ -25,6 +25,7 @@ public class GetMoviesQuery
             .Include(x => x.Genre)
             .Include(x => x.MovieActors)
             .ThenInclude(x => x.Actor)
+            .Where(x=>x.IsActive)
             .ToList();
         var result = _mapper.Map<List<MoviesViewModel>>(list);
         return result;
@@ -46,6 +47,8 @@ public class MoviesViewModel
     public List<GetMoviesActorsModel> Actors { get; set; }
 
     public float Price { get; set; }
+
+    public bool IsActive { get; set; }
 }
 
 public class GetMoviesActorsModel

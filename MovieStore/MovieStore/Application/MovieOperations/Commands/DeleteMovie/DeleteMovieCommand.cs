@@ -21,7 +21,7 @@ public class DeleteMovieCommand
         {
             throw new InvalidOperationException("Film Bulunamadı");
         }
-        _context.Movies.Remove(movie);
+        movie.IsActive = false;
         _context.SaveChanges();
 
     }

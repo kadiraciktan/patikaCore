@@ -63,12 +63,28 @@ namespace MovieStore.DataAccess
                             new MovieActor(){ActorId=4},
                             new MovieActor(){ActorId=3},
                         }
+                    },
+
+                     new Movie()
+                    {
+                        Id=2,
+                        Name ="Fast And Furious : Drift",
+                        Director=directors[0],
+                        Price=17f,
+                        GenreId=5,
+                        Year=DateTime.Now.Date.AddYears(-3),
+                        MovieActors = new List<MovieActor>(){
+                            new MovieActor(){ActorId=7},
+                            new MovieActor(){ActorId=5},
+                            new MovieActor(){ActorId=6},
+                        }
                     }
+
                 };
 
                 List<Customer> customers = new List<Customer>()
                 {
-                    new Customer(){ 
+                    new Customer(){
                         Id = 1,
                         Email="test@test.com",
                         Name="Kadir",
@@ -76,6 +92,19 @@ namespace MovieStore.DataAccess
                         Password="123456",
                         BougthMovies= new List<Movie>(){ movies[0]},
                         FavoriteGenres= new List<Genre>{ genres[4]}
+                    }
+                };
+
+
+                List<Order> orders = new List<Order>()
+                {
+                    new Order() {
+                        Id = 1,
+                        BoughtTime=DateTime.Now.Date.AddDays(-6),
+                        CustomerId=1,
+                        MovieId=1,
+                        Price=10f,
+                        IsActive=true
                     }
                 };
 
@@ -103,6 +132,11 @@ namespace MovieStore.DataAccess
                 if (!context.Customers.Any())
                 {
                     context.Customers.AddRange(customers);
+                }
+
+                if (!context.Orders.Any())
+                {
+                    context.Orders.AddRange(orders);
                 }
 
                 context.SaveChanges();

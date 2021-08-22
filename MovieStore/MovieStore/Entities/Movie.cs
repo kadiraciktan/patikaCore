@@ -14,20 +14,28 @@ namespace MovieStore.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Name {  get; set; }
-        public DateTime Year {  get; set; }
+        public string Name { get; set; }
+        public DateTime Year { get; set; }
 
         public int GenreId { get; set; }
-        public Genre Genre {  get; set; }
+        public Genre Genre { get; set; }
 
         public int DirectorId { get; set; }
-        public Director Director {  get; set; }
+        public Director Director { get; set; }
+
+
+        public bool IsActive { get; set; } = true;
+
+        public float Price { get; set; }
 
         public virtual ICollection<MovieActor> MovieActors { get; set; }
 
-        public float Price {  get; set; }
 
-        public virtual ICollection<MovieCustomer> MovieCustomers {  get; set; }
+        public virtual ICollection<MovieCustomer> MovieCustomers { get; set; }
+
+        public virtual ICollection<OrderCustomer> OrderCustomers { get; set; }
+
+
 
     }
 }

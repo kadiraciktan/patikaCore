@@ -26,6 +26,8 @@ namespace MovieStore.DataAccess
             modelBuilder.Entity<MovieActor>().HasKey(x => new { x.ActorId, x.MovieId });
             modelBuilder.Entity<MovieCustomer>().HasKey(x => new { x.MovieId, x.CustomerId, x.GenreId });
 
+            modelBuilder.Entity<OrderCustomer>().HasKey(x => new { x.CustomerId, x.OrderId,x.MovieId });
+
 
             modelBuilder.Entity<MovieActor>()
                 .HasOne(x => x.Movie)
@@ -48,6 +50,11 @@ namespace MovieStore.DataAccess
                 .HasOne(x=>x.Movie)
                 .WithMany(x=>x.MovieCustomers)
                 .HasForeignKey(x => x.MovieId);
+
+            modelBuilder.Entity<OrderCustomer>()
+                .HasOne(x=>x.Order)
+                .WithMany(x=>x.OrderCustomer)
+                .HasForeignKey(x=> x.OrderId);
 
 
         }

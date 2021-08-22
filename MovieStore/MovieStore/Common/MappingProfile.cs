@@ -14,6 +14,10 @@ using MovieStore.Application.MovieOperations.Commands.CreateMovie;
 using MovieStore.Application.MovieOperations.Commands.UpdateMovie;
 using MovieStore.Application.MovieOperations.Queries.GetMovieDetail;
 using MovieStore.Application.MovieOperations.Queries.GetMovies;
+using MovieStore.Application.OrderOperations.Commands;
+using MovieStore.Application.OrderOperations.Commands.CreateOrder;
+using MovieStore.Application.OrderOperations.Queries.GetOrderDetail;
+using MovieStore.Application.OrderOperations.Queries.GetOrders;
 using MovieStore.Entities;
 using System;
 using System.Collections.Generic;
@@ -83,10 +87,10 @@ namespace MovieStore.Common
             CreateMap<CreateCustomerModel, Customer>();
 
             CreateMap<Customer, CustomersViewModel>()
-                .ForMember(dest=>dest.BougthMovies,
-                opt=>opt.MapFrom(src=>src.BougthMovies.Select(x=>new CustormersMovieModel { Id=x.Id,Name=x.Name})))
-                .ForMember(dest=>dest.FavoriteGenres,
-                opt=>opt.MapFrom(src=>src.FavoriteGenres.Select(x=>new CustormersGenreModel { Id=x.Id,Name=x.Name})));
+                .ForMember(dest => dest.BougthMovies,
+                opt => opt.MapFrom(src => src.BougthMovies.Select(x => new CustormersMovieModel { Id = x.Id, Name = x.Name })))
+                .ForMember(dest => dest.FavoriteGenres,
+                opt => opt.MapFrom(src => src.FavoriteGenres.Select(x => new CustormersGenreModel { Id = x.Id, Name = x.Name })));
 
 
             CreateMap<Customer, CustomerDetailViewModel>()
@@ -95,6 +99,27 @@ namespace MovieStore.Common
               .ForMember(dest => dest.FavoriteGenres,
               opt => opt.MapFrom(src => src.FavoriteGenres.Select(x => new CustomerDetailGenreModel { Id = x.Id, Name = x.Name })));
 
+
+            #endregion
+
+            #region Order
+            CreateMap<CreateOrderModel, Order>();
+              
+
+
+            CreateMap<CreateMovieModel, Movie>().ForMember(
+         dest => dest.MovieActors,
+         opt => opt.MapFrom(src => src.MovieActors.Select(x => new MovieActor() { ActorId = x })));
+
+
+            CreateMap<Order, OrdersViewModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => new OrdersCustomerModels { Id = src.CustomerId, Name = src.Customer.Name }))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => new OrdersMovieModel { Id = src.MovieId, Name = src.Movie.Name }));
+
+
+            CreateMap<Order, OrderDetailViewModel>()
+                .ForMember(dest => dest.Customer, opt => opt.MapFrom(src => new OrderDetailCustomerModel { Id = src.CustomerId, Name = src.Customer.Name }))
+                .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => new OrderDetailMovieModel { Id = src.MovieId, Name = src.Movie.Name }));
 
             #endregion
 

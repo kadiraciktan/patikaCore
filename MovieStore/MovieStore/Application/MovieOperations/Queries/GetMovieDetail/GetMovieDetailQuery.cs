@@ -53,6 +53,8 @@ public class MovieDetailModel
     public List<GetMovieDetailActorsModel> Actors { get; set; }
 
     public float Price { get; set; }
+
+    public bool IsActive { get; set; }
 }
 
 public class GetMovieDetailActorsModel

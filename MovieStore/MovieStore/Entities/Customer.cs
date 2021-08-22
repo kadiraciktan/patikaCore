@@ -15,9 +15,12 @@ namespace MovieStore.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public string RefreshToken { get; set; }
-        public DateTime RefreshTokenExpireDate {  get; set; }
-        public  List<Genre> FavoriteGenres { get; set; }
-        public  List<Movie> BougthMovies { get; set; }
-        public virtual ICollection<MovieCustomer> Movies {  get; set; } 
+        public DateTime RefreshTokenExpireDate { get; set; }
+        public List<Genre> FavoriteGenres { get; set; }
+        public List<Movie> BougthMovies { get; set; }
+
+        public virtual ICollection<MovieCustomer> Movies { get; set; }
+
+        public virtual ICollection<OrderCustomer> OrderCustomers { get; set; }
     }
 }
