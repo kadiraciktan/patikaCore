@@ -18,6 +18,10 @@ namespace MovieStore.DataAccess
         public DbSet<Director> Directors { get; set; }
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<MovieCustomer> MovieCustomers { get; set; }
+        public DbSet<OrderCustomer> OrderCustomers { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

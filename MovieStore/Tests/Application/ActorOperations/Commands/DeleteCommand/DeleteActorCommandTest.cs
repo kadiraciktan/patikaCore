@@ -18,6 +18,7 @@ namespace Tests.Application.ActorOperations.Commands.DeleteCommand
         {
             _context = testFixture.Context;
         }
+
         [Theory]
         [InlineData(-1)]
         [InlineData(-0)]

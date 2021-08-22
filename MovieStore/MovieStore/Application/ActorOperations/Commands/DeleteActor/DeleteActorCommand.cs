@@ -24,13 +24,14 @@ namespace MovieStore.Application.ActorOperations.Commands.DeleteActor
             {
                 throw new InvalidOperationException("Aktör Bulunamadı");
             }
-            
-            //var movie = _context.Movies.FirstOrDefault(x=>x.);
-            //if (movie is not null)
-            //{
-            //    throw new InvalidOperationException("Aktör Silinemez! Film Mevcut");
 
-            //}
+
+            var movie = _context.MovieActors.FirstOrDefault(x => x.ActorId == ActorId);
+            if (movie is not null)
+            {
+                throw new InvalidOperationException("Aktör Silinemez! Film Mevcut");
+
+            }
 
             _context.Actors.Remove(actor);
             _context.SaveChanges();

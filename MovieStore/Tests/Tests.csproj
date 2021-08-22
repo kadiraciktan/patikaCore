@@ -23,11 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\ActorOperations\Commands\UpdateCommand\" />
-    <Folder Include="Application\ActorOperations\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MovieStore\MovieStore.csproj" />
   </ItemGroup>
 

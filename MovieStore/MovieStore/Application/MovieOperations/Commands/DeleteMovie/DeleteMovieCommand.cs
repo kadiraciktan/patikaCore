@@ -21,6 +21,12 @@ public class DeleteMovieCommand
         {
             throw new InvalidOperationException("Film Bulunamadı");
         }
+
+        var order = _context.Orders.FirstOrDefault(x => x.MovieId == MovieId);
+        if (order is not null)
+        {
+            throw new InvalidOperationException("Film Silinemez Satın Alım Mevcut");
+        }
         movie.IsActive = false;
         _context.SaveChanges();
 

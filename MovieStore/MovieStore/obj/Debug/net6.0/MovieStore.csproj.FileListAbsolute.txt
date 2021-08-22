@@ -27,7 +27,6 @@ C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\bin\Debug\net6.0\Swashbu
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.csproj.AssemblyReference.cache
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.AssemblyInfoInputs.cache
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.AssemblyInfo.cs
@@ -38,6 +37,7 @@ C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieSt
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.StaticWebAssets.xml
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\StaticWebAssets.build.json
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\scopedcss\bundle\MovieStore.styles.css
+C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.csproj.CopyComplete
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.dll
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\ref\MovieStore.dll
 C:\Users\kadir\Desktop\patikaCore\MovieStore\MovieStore\obj\Debug\net6.0\MovieStore.pdb

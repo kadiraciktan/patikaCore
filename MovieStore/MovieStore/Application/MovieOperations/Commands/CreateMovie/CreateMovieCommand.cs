@@ -26,13 +26,13 @@ public class CreateMovieCommand
             throw new InvalidOperationException("Bu Film Zaten Mevcut.");
         }
 
-        if (!_context.Genres.Any(x => x.Id == movie.GenreId))
+        if (!_context.Genres.Any(x => x.Id == Model.GenreId))
         {
             throw new InvalidOperationException("Kategori Bulunamadı");
 
         }
 
-        if (!_context.Directors.Any(x => x.Id == movie.DirectorId))
+        if (!_context.Directors.Any(x => x.Id == Model.DirectorId))
         {
             throw new InvalidOperationException("Yönetmen Bulunamadı");
 

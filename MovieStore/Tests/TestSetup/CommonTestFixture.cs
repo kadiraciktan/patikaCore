@@ -20,7 +20,7 @@ namespace Tests.TestSetup
 
             Context = new MovieContext(options);
             Context.Database.EnsureCreated();
-            Context.AddActors();
+            Context.AddDatas();
             Context.SaveChanges();
 
             Mapper = new MapperConfiguration(config => { config.AddProfile<MappingProfile>(); }).CreateMapper();

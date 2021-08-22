@@ -10,7 +10,7 @@ using MovieStore.Application.MovieOperations.Queries.GetMovies;
 using MovieStore.DataAccess;
 
 namespace MovieStore.Controllers;
-[Authorize]
+//[Authorize]
 [Route("api/[controller]s")]
 [ApiController]
 public class MovieController : ControllerBase

@@ -11,5 +11,7 @@ public class UpdateMovieCommandValidator:AbstractValidator<UpdateMovieCommand>
         RuleFor(command => command.Model.Name).NotEmpty().MinimumLength(2);
         RuleFor(command => command.Model.GenreId).NotEmpty().GreaterThan(0);
         RuleFor(command => command.Model.DirectorId).NotEmpty().GreaterThan(0);
+
+   
     }
 }

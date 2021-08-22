@@ -20,9 +20,14 @@ public class DeleteCustomerCommand
             throw new InvalidOperationException("Müşteri Bulunamadı");
         }
 
+        var order = _context.Orders.FirstOrDefault(x => x.CustomerId == CustomerId);
+        if (order is not null)
+        {
+            throw new InvalidOperationException("Müşteri Silinemez Satın Alım Mevcut");
+        }
+
         _context.Customers.Remove(customer);
         _context.SaveChanges();
-
     }
 
 }
