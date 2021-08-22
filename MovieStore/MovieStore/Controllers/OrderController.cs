@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieStore.Application.OrderOperations.Commands.CreateOrder;
 using MovieStore.Application.OrderOperations.Commands.DeleteOrder;
@@ -9,6 +10,7 @@ using MovieStore.Application.OrderOperations.Queries.GetOrders;
 using MovieStore.DataAccess;
 
 namespace MovieStore.Controllers;
+[Authorize]
 [Route("api/[controller]s")]
 [ApiController]
 public class OrderController : ControllerBase

@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace MovieStore.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]s")]
     [ApiController]
     public class DirectorController : ControllerBase

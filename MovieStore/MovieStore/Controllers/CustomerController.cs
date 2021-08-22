@@ -53,7 +53,7 @@ public class CustomerController : ControllerBase
         return Ok(resultToken);
     }
 
-   // [Authorize]
+   [Authorize]
     [HttpGet]
     public List<CustomersViewModel> GetCustomers()
     {
@@ -62,7 +62,7 @@ public class CustomerController : ControllerBase
 
     }
 
-   // [Authorize]
+   [Authorize]
     [HttpGet("{id}")]
     public CustomerDetailViewModel GetCustomerDetail(int id)
     {
@@ -73,7 +73,7 @@ public class CustomerController : ControllerBase
         return query.Handle();
     }
 
-   // [Authorize]
+    [Authorize]
     [HttpPost]
     public IActionResult CreateCustomer([FromBody] CreateCustomerModel model)
     {
@@ -85,7 +85,7 @@ public class CustomerController : ControllerBase
         return Ok();
     }
 
-    // [Authorize]
+     [Authorize]
     [HttpPut("{id}")]
     public IActionResult UpdateCustomer([FromBody]UpdateCustomerModel model,int id)
     {
@@ -98,7 +98,7 @@ public class CustomerController : ControllerBase
         return Ok();
     }
 
-    // [Authorize]
+     [Authorize]
     [HttpDelete("{id}")]
     public IActionResult DeleteCustomer(int id)
     {
