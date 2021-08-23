@@ -10,7 +10,6 @@ public class UpdateCustomerCommand
     public UpdateCustomerModel Model { get; set; }
     public int CustomerId { get; set; }
 
-
     public UpdateCustomerCommand(IMovieContext context, IMapper mapper)
     {
         _context = context;
@@ -24,9 +23,9 @@ public class UpdateCustomerCommand
         {
             throw new InvalidOperationException("Müşteri Bulunamadı");
         }
-        customer.Name = customer.Name == default ? customer.Name : Model.Name;
-        customer.Surname = customer.Surname == default ? customer.Surname : Model.Surname;
-        customer.Password = customer.Password == default ? customer.Password : Model.Password;
+        customer.Name = Model.Name == default ? customer.Name : Model.Name;
+        customer.Surname = Model.Surname == default ? customer.Surname : Model.Surname;
+        customer.Password = Model.Password == default ? customer.Password : Model.Password;
         _context.SaveChanges();
     }
 }

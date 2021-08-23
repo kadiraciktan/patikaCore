@@ -32,8 +32,8 @@ namespace MovieStore.Application.DirectorOperations.Commands.UpdateDirector
                 throw new InvalidOperationException("Aynı İsimde Bir Yönetmen Mevcut !");
             }
 
-            director.Name = director.Name == default ? director.Name : Model.Name;
-            director.Surname = director.Surname ==default ? director.Surname: Model.Surname;
+            director.Name = Model.Name == default ? director.Name : Model.Name;
+            director.Surname = Model.Surname ==default ? director.Surname: Model.Surname;
             _context.SaveChanges();
 
         }

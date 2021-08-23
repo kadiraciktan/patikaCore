@@ -26,8 +26,8 @@ namespace MovieStore.Application.ActorOperations.Commands.UpdateActor
             {
                 throw new InvalidOperationException("Aktör Bulunamadı");
             }
-            actor.Name = actor.Name == default ? actor.Name : Model.Name;
-            actor.Surname = actor.Surname == default ? actor.Surname : Model.Surname;
+            actor.Name = Model.Name == default ? actor.Name : Model.Name;
+            actor.Surname = Model.Surname == default ? actor.Surname : Model.Surname;
 
             var valid = _context.Actors.FirstOrDefault(x => x.Name == actor.Name && x.Surname == actor.Surname);
             if (valid is not null)

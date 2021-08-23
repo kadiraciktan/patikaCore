@@ -24,7 +24,7 @@ public class CustomerController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IConfiguration _configuration;
 
-    public CustomerController(IMovieContext context, IMapper mapper,IConfiguration configuration)
+    public CustomerController(IMovieContext context, IMapper mapper, IConfiguration configuration)
     {
         _context = context;
         _mapper = mapper;
@@ -53,20 +53,20 @@ public class CustomerController : ControllerBase
         return Ok(resultToken);
     }
 
-   [Authorize]
+    [Authorize]
     [HttpGet]
     public List<CustomersViewModel> GetCustomers()
     {
-        GetCustomersQuery query = new GetCustomersQuery(_context,_mapper);
+        GetCustomersQuery query = new GetCustomersQuery(_context, _mapper);
         return query.Handle();
 
     }
 
-   [Authorize]
+    [Authorize]
     [HttpGet("{id}")]
     public CustomerDetailViewModel GetCustomerDetail(int id)
     {
-        GetCustomerDetailQuery query = new GetCustomerDetailQuery(_context,_mapper);
+        GetCustomerDetailQuery query = new GetCustomerDetailQuery(_context, _mapper);
         query.CustomerId = id;
         GetCustomerDetailQueryValidator validationRules = new GetCustomerDetailQueryValidator();
         validationRules.ValidateAndThrow(query);
@@ -77,7 +77,7 @@ public class CustomerController : ControllerBase
     [HttpPost]
     public IActionResult CreateCustomer([FromBody] CreateCustomerModel model)
     {
-        CreateCustomerCommand command = new CreateCustomerCommand(_context,_mapper);
+        CreateCustomerCommand command = new CreateCustomerCommand(_context, _mapper);
         command.Model = model;
         CreateCustomerCommandValidator validationRules = new CreateCustomerCommandValidator();
         validationRules.ValidateAndThrow(command);
@@ -85,11 +85,11 @@ public class CustomerController : ControllerBase
         return Ok();
     }
 
-     [Authorize]
+    [Authorize]
     [HttpPut("{id}")]
-    public IActionResult UpdateCustomer([FromBody]UpdateCustomerModel model,int id)
+    public IActionResult UpdateCustomer([FromBody] UpdateCustomerModel model, int id)
     {
-        UpdateCustomerCommand command = new UpdateCustomerCommand(_context,_mapper);
+        UpdateCustomerCommand command = new UpdateCustomerCommand(_context, _mapper);
         command.CustomerId = id;
         command.Model = model;
         UpdateCustomerCommandValidator validationRules = new UpdateCustomerCommandValidator();
@@ -98,11 +98,11 @@ public class CustomerController : ControllerBase
         return Ok();
     }
 
-     [Authorize]
+    [Authorize]
     [HttpDelete("{id}")]
     public IActionResult DeleteCustomer(int id)
     {
-        DeleteCustomerCommand command =  new DeleteCustomerCommand(_context);
+        DeleteCustomerCommand command = new DeleteCustomerCommand(_context);
         command.CustomerId = id;
         DeleteCustomerCommandValidator validationRules = new DeleteCustomerCommandValidator();
         validationRules.ValidateAndThrow(command);

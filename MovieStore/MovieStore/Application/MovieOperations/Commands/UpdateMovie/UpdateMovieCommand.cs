@@ -57,12 +57,12 @@ public class UpdateMovieCommand
 
 
         var result = _mapper.Map<Movie>(Model);
-        movie.Name = movie.Name == default ? movie.Name : result.Name;
-        movie.Year = movie.Year == default ? movie.Year : result.Year;
-        movie.GenreId = movie.GenreId == default ? movie.GenreId : result.GenreId;
-        movie.DirectorId = movie.DirectorId == default ? movie.DirectorId : result.DirectorId;
-        movie.Price = movie.Price == default ? movie.Price : result.Price;
-        movie.MovieActors = result.MovieActors.Count>0 ? result.MovieActors : movie.MovieActors;
+        movie.Name = Model.Name == default ? movie.Name : result.Name;
+        movie.Year = Model.Year == default ? movie.Year : result.Year;
+        movie.GenreId = Model.GenreId == default ? movie.GenreId : result.GenreId;
+        movie.DirectorId = Model.DirectorId == default ? movie.DirectorId : result.DirectorId;
+        movie.Price = Model.Price == default ? movie.Price : result.Price;
+        movie.MovieActors = Model.MovieActors.Count>0 ? result.MovieActors : movie.MovieActors;
         _context.SaveChanges();
 
     }
